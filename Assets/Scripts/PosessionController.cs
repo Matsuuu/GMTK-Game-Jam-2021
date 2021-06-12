@@ -14,7 +14,7 @@ public class PosessionController : MonoBehaviour
     public bool CanCancelPosession = false;
     public BoxCollider2D PlayerCollider;
 
-
+    private InteractionController PlayerInteractionController;
     private float OriginalPlayerMovespeed;
     private Vector2 OriginalBoxColliderSize;
     private Vector2 OriginalBoxColliderOffset;
@@ -23,6 +23,7 @@ public class PosessionController : MonoBehaviour
         PosessionRange = GetComponent<CircleCollider2D>();
         PlayerControllerScript = GetComponent<PlayerController>();
         PlayerCollider = GetComponent<BoxCollider2D>();
+        PlayerInteractionController = GetComponent<InteractionController>();
 
         OriginalPlayerMovespeed = PlayerControllerScript.Speed;
         OriginalBoxColliderOffset = PlayerCollider.offset;
@@ -47,8 +48,8 @@ public class PosessionController : MonoBehaviour
         }
 
         // TODO: Checkaa että onko toinen targetti tähtäimessä
-        if (IsPosessing && PosessableTarget && Input.GetButtonDown("Posess") && CanCancelPosession) {
-            PosessableTarget.EndPosess();
+        if (IsPosessing && PosessionTarget && Input.GetButtonDown("Posess") && CanCancelPosession) {
+            PosessionTarget.EndPosess();
         }
     }
 
@@ -61,6 +62,7 @@ public class PosessionController : MonoBehaviour
         }
 
         CopyPosessionStats();
+        PlayerInteractionController.UpdateInteractionTags(PosessionTarget.InteractionTags);
 
         IsPosessing = true;
         CanCancelPosession = true;
@@ -92,6 +94,7 @@ public class PosessionController : MonoBehaviour
         IsPosessing = false;
         PosessionTarget = null;
         ReturnOriginalStats();
+        PlayerInteractionController.ClearInteractionTags();
     }
 
     private void FindPosessable() {

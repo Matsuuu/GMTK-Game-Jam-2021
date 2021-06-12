@@ -5,5 +5,7 @@ using UnityEngine;
 public enum InteractionTag {
     VENTS,
     KEYCARD_BLUE,
-    KEYCARD_RED
+    KEYCARD_GREEN,
+    KEYCARD_RED,
+    GUNS
 }

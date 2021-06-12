@@ -119,11 +119,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
+        y: 96
         width: 32
         height: 32
       alignment: 9
-      pivot: {x: 0.6666104, y: 0.51801187}
+      pivot: {x: 0.52319664, y: 0.7273264}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -139,12 +139,12 @@ TextureImporter:
       name: parasitesheet1_1
       rect:
         serializedVersion: 2
-        x: 32
-        y: 0
+        x: 0
+        y: 64
         width: 32
         height: 32
       alignment: 9
-      pivot: {x: 0.7386581, y: 0.5135089}
+      pivot: {x: 0.49072143, y: 0.7366049}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -160,12 +160,12 @@ TextureImporter:
       name: parasitesheet1_2
       rect:
         serializedVersion: 2
-        x: 64
-        y: 0
+        x: 0
+        y: 32
         width: 32
         height: 32
       alignment: 9
-      pivot: {x: 0.72514915, y: 0.5135089}
+      pivot: {x: 0.49536073, y: 0.73660505}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -181,12 +181,12 @@ TextureImporter:
       name: parasitesheet1_3
       rect:
         serializedVersion: 2
-        x: 96
+        x: 0
         y: 0
         width: 32
         height: 32
       alignment: 9
-      pivot: {x: 0.72965217, y: 0.486491}
+      pivot: {x: 0.49536073, y: 0.66701525}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []

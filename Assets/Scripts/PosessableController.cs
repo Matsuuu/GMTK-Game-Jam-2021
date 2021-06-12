@@ -9,7 +9,6 @@ public class PosessableController : MonoBehaviour
     public bool IsPosessed = false;
     public bool OnPosessCooldown = false;
     public int PosessionTimeInSeconds = 10;
-    public int PosessionCooldownInSeconds = 20;
     public float MovementSpeed = 2;
     public List<InteractionTag> InteractionTags;
 
@@ -54,6 +53,7 @@ public class PosessableController : MonoBehaviour
         if (!OnPosessCooldown) return;
 
         float cooldownTimeRemaining = Time.time - PosessionCooldownStartTime;
+        Debug.Log(cooldownTimeRemaining);
         SliderElement.value = cooldownTimeRemaining;
     }
 
@@ -88,7 +88,7 @@ public class PosessableController : MonoBehaviour
     private IEnumerator PosessionCooldown() {
         PosessionCooldownStartTime = Time.time;
         OnPosessCooldown = true;
-        yield return new WaitForSeconds(PosessionCooldownInSeconds);
+        yield return new WaitForSeconds(PosessionTimeInSeconds);
         OnPosessCooldown = false;
         CanBePosessed = true;
         PosessionCooldownStartTime = 0;
