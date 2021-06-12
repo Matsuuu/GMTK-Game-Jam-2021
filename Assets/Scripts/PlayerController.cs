@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour
     public float Speed;
     public float Acceleration;
     public Vector2 Velocity;
+    public bool CanMove = true;
 
     // Start is called before the first frame update
     void Start()
@@ -22,8 +23,10 @@ public class PlayerController : MonoBehaviour
 
     void HandleMovement()
     {
-        float xAxis = Input.GetAxis("Horizontal");
-        float yAxis = Input.GetAxis("Vertical");
+        if (CanMove) return;
+
+        float xAxis = Input.GetAxis("Horizontal") * Speed;
+        float yAxis = Input.GetAxis("Vertical") * Speed;
 
         Vector3 oldPos = transform.position;
         transform.position = new Vector3(oldPos.x + xAxis * Time.deltaTime, oldPos.y + yAxis * Time.deltaTime, 1);
