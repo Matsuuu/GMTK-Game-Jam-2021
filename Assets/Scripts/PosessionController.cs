@@ -6,14 +6,27 @@ public class PosessionController : MonoBehaviour
 {
     public GameObject PosessionIndicator;
     public PosessableController PosessableTarget;
+    public PosessableController PosessionTarget;
     public CircleCollider2D PosessionRange;
     public List<PosessableController> TargetsInRadius = new List<PosessableController>();
     public PlayerController PlayerControllerScript;
     public bool IsPosessing = false;
+    public bool CanCancelPosession = false;
+    public BoxCollider2D PlayerCollider;
+
+
+    private float OriginalPlayerMovespeed;
+    private Vector2 OriginalBoxColliderSize;
+    private Vector2 OriginalBoxColliderOffset;
     // Start is called before the first frame update
     void Start() {
         PosessionRange = GetComponent<CircleCollider2D>();
         PlayerControllerScript = GetComponent<PlayerController>();
+        PlayerCollider = GetComponent<BoxCollider2D>();
+
+        OriginalPlayerMovespeed = PlayerControllerScript.Speed;
+        OriginalBoxColliderOffset = PlayerCollider.offset;
+        OriginalBoxColliderSize = PlayerCollider.size;
     }
 
     // Update is called once per frame
@@ -22,22 +35,63 @@ public class PosessionController : MonoBehaviour
         ManageIndicator();
 
         HandlePosess();
+        FollowPosessed();
     }
 
     private void HandlePosess() {
-        if (Input.GetKeyDown("Posess") && PosessableTarget) {
+        if (Input.GetButtonDown("Posess") && PosessableTarget && PosessableTarget.CanBePosessed && PlayerControllerScript.CanMove) {
+            PosessionTarget = PosessableTarget;
             PosessableTarget.Posess();
             PlayerControllerScript.CanMove = false;
-            IsPosessing = true;
+            StartCoroutine(HandlePosessionStart());
         }
 
-        if (IsPosessing && Input.GetKeyDown("Posess")) {
+        // TODO: Checkaa että onko toinen targetti tähtäimessä
+        if (IsPosessing && PosessableTarget && Input.GetButtonDown("Posess") && CanCancelPosession) {
             PosessableTarget.EndPosess();
         }
     }
 
-    public void EndPosession() {
+    private IEnumerator HandlePosessionStart() {
+        for (int i = 0; i < 60; i++) {
+            yield return new WaitForFixedUpdate();
+            float step = 2 * Time.deltaTime;
+            transform.position = Vector2.MoveTowards(transform.position, PosessionTarget.transform.position, step);
+            if (transform.position == PosessionTarget.transform.position) break;
+        }
+
+        CopyPosessionStats();
+
+        IsPosessing = true;
+        CanCancelPosession = true;
         PlayerControllerScript.CanMove = true;
+    }
+
+    private void CopyPosessionStats() {
+        Vector2 scaleModifier = new Vector2(PosessionTarget.transform.localScale.x , PosessionTarget.transform.localScale.y);
+        BoxCollider2D boxCollider2D = PosessionTarget.GetComponent<BoxCollider2D>();
+        PlayerControllerScript.Speed = PosessionTarget.MovementSpeed;
+        PlayerCollider.offset = boxCollider2D.offset * scaleModifier;
+        PlayerCollider.size = boxCollider2D.size * scaleModifier;
+    }
+
+    private void ReturnOriginalStats() {
+        PlayerControllerScript.Speed = OriginalPlayerMovespeed;
+        PlayerCollider.offset = OriginalBoxColliderOffset;
+        PlayerCollider.size = OriginalBoxColliderSize;
+    }
+
+    private void FollowPosessed() {
+        if (IsPosessing) {
+            PosessionTarget.transform.position = transform.position;
+            PosessionTarget.transform.rotation = transform.rotation;
+        }
+    }
+
+    public void EndPosession() {
+        IsPosessing = false;
+        PosessionTarget = null;
+        ReturnOriginalStats();
     }
 
     private void FindPosessable() {
@@ -56,7 +110,7 @@ public class PosessionController : MonoBehaviour
     }
 
     private void ManageIndicator() {
-        PosessionIndicator.SetActive(PosessableTarget != null);
+        PosessionIndicator.SetActive(PosessableTarget != null && PosessableTarget.CanBePosessed && PosessionTarget == null);
         if (!PosessableTarget) return;
 
         PosessionIndicator.transform.position = PosessableTarget.transform.position;
