@@ -7,5 +7,7 @@ public enum InteractionTag {
     KEYCARD_BLUE,
     KEYCARD_GREEN,
     KEYCARD_RED,
-    GUNS
+    GUNS,
+    DECONTAMINATION,
+    SCIENTIST
 }

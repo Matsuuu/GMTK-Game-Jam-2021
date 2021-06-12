@@ -53,7 +53,6 @@ public class PosessableController : MonoBehaviour
         if (!OnPosessCooldown) return;
 
         float cooldownTimeRemaining = Time.time - PosessionCooldownStartTime;
-        Debug.Log(cooldownTimeRemaining);
         SliderElement.value = cooldownTimeRemaining;
     }
 

@@ -9,7 +9,6 @@ public class CameraController : MonoBehaviour
     private Vector3 Velocity = Vector3.zero;
     private Camera CameraComponent;
 
-    public float FollowSpeed;
     public float Damp = 0.15f;
     // Start is called before the first frame update
     void Start()
