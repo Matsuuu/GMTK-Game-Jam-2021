@@ -385,9 +385,9 @@ Tilemap:
       e03: 0
       e10: -0.99999994
       e11: 0.000000059604645
-      e12: -0
+      e12: 0
       e13: 0
-      e20: -0
+      e20: 0
       e21: 0
       e22: 1
       e23: 0
@@ -402,7 +402,7 @@ Tilemap:
       e02: 3.0868493e-36
       e03: 0
       e10: 2.58e-43
-      e11: NaN
+      e11: 6e-45
       e12: 4.5905e-41
       e13: 0
       e20: 0
@@ -488,7 +488,7 @@ TilemapRenderer:
   m_Mode: 0
   m_DetectChunkCullingBounds: 0
   m_MaskInteraction: 0
---- !u!114 &317924553014252183
+--- !u!114 &7028143862109668254
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
