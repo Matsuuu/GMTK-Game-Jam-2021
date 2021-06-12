@@ -41,6 +41,7 @@ public class InteractionController : MonoBehaviour
     private void FindInteractable() {
         foreach (InteractableController targetInRadius in InteractionTargetsInRange) {
             RaycastHit2D hit = Physics2D.Linecast(transform.position, targetInRadius.transform.position, 3); // Ignore player layer
+
             if (RaycastHitViableTarget(hit, targetInRadius)) {
                 InteractionTarget = targetInRadius;
             }
@@ -53,6 +54,7 @@ public class InteractionController : MonoBehaviour
 
     public void ClearInteractionTags() {
         InteractionTags = new List<InteractionTag>();
+        InteractionTarget = null;
     }
 
     private bool RaycastHitViableTarget(RaycastHit2D hit, InteractableController interactionTarget) {

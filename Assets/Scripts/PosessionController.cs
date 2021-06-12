@@ -47,7 +47,6 @@ public class PosessionController : MonoBehaviour
             return;
         }
 
-        // TODO: Checkaa että onko toinen targetti tähtäimessä
 
         if (IsPosessing && PosessableTarget && Input.GetButtonDown("Posess")) {
             StartCoroutine(DoSwap());
@@ -55,15 +54,18 @@ public class PosessionController : MonoBehaviour
         }
 
         if (IsPosessing && Input.GetButtonDown("Posess") && CanCancelPosession) {
-            Debug.Log("Bar");
             PosessionTarget.EndPosess();
         }
     }
 
     IEnumerator DoSwap() {
         PosessionTarget.EndPosess();
-        yield return new WaitForSeconds(0.2f);
-        DoPosess();
+        Vector3 MoveTowards = transform.position - PosessableTarget.transform.position;
+        transform.position += MoveTowards * 0.2f * -1;
+        yield return new WaitForFixedUpdate();
+        if (PosessableTarget) {
+            DoPosess();
+        }
     }
 
     private void DoPosess() {

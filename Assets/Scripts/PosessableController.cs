@@ -10,6 +10,7 @@ public class PosessableController : MonoBehaviour
     public bool OnPosessCooldown = false;
     public int PosessionTimeInSeconds = 10;
     public float MovementSpeed = 2;
+    private float OriginalMovementSpeed;
     public List<InteractionTag> InteractionTags;
     public List<Transform> PatrolPoints;
     public bool Patrolling = true;
@@ -30,6 +31,8 @@ public class PosessableController : MonoBehaviour
 
     // Start is called before the first frame update
     void Start() {
+        OriginalMovementSpeed = MovementSpeed;
+
         SliderElement = GetComponentInChildren<Slider>();
         SliderCanvas = GetComponentInChildren<Canvas>();
         PosessableCollider = GetComponent<BoxCollider2D>();
@@ -51,12 +54,13 @@ public class PosessableController : MonoBehaviour
     void HandlePatrol() {
         if (Patrolling || PatrolPoints.Count <= 0) return;
 
+        Patrolling = true;
         StartCoroutine(DoPatrol());
     }
 
     private IEnumerator DoPatrol() {
         PatrolTarget = PatrolPoints[PatrolPointIndex];
-        float step = 2 * Time.deltaTime * 0.01f;
+        float step = 2 * Time.deltaTime;
         while (Patrolling) {
             yield return new WaitForFixedUpdate();
             transform.position = Vector2.MoveTowards(transform.position, PatrolTarget.position, step);
@@ -85,7 +89,6 @@ public class PosessableController : MonoBehaviour
     }
 
     IEnumerator ChangePatrolPoint() {
-        float OriginalMovementSpeed = MovementSpeed;
         MovementSpeed = 0;
         yield return new WaitForSeconds(Random.value * 3);
 
@@ -122,6 +125,7 @@ public class PosessableController : MonoBehaviour
         PosessableCollider.enabled = false;
         PosessableAnimator.speed = 1.5f;
         Patrolling = false;
+        MovementSpeed = OriginalMovementSpeed;
 
         PosessionTimeoutCoroutine = StartCoroutine(PosessionTimeout());
     }

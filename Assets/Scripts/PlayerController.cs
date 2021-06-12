@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -19,6 +20,17 @@ public class PlayerController : MonoBehaviour
     {
         HandleMovement();
         HandleRotation();
+    }
+
+    private void Update() {
+        HandleRestart();
+    }
+
+    private void HandleRestart() {
+        if (Input.GetButtonDown("Restart")) {
+            Debug.Log("aa");
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
     }
 
     void HandleMovement()
