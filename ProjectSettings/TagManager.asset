@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Posessable
   - Interactable
+  - PatrolPoint
   layers:
   - Default
   - TransparentFX

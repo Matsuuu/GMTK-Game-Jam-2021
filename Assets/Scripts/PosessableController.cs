@@ -11,6 +11,11 @@ public class PosessableController : MonoBehaviour
     public int PosessionTimeInSeconds = 10;
     public float MovementSpeed = 2;
     public List<InteractionTag> InteractionTags;
+    public List<Transform> PatrolPoints;
+    public bool Patrolling = true;
+
+    public int PatrolPointIndex = 0;
+    public Transform PatrolTarget;
 
     private float PosessionStartTime;
     private float PosessionCooldownStartTime;
@@ -40,6 +45,60 @@ public class PosessableController : MonoBehaviour
     void Update() {
         HandlePosessed();
         HandleCooldown();
+
+        HandlePatrol();
+    }
+
+    void HandlePatrol() {
+        if (Patrolling && PatrolPoints.Count <= 0) return;
+
+        StartCoroutine(DoPatrol());    
+    }
+
+    private IEnumerator DoPatrol() {
+        PatrolTarget = PatrolPoints[PatrolPointIndex];
+        float step = 2 * Time.deltaTime * 0.01f;
+        while (Patrolling) {
+            yield return new WaitForFixedUpdate();
+            transform.position = Vector2.MoveTowards(transform.position, PatrolTarget.position, step);
+
+            Vector3 targetLookAtPos = new Vector3(PatrolTarget.position.x, PatrolTarget.position.y, 0);
+
+            Vector3 playerPos = transform.position;
+            targetLookAtPos.x -= playerPos.x;
+            targetLookAtPos.y -= playerPos.y;
+
+            float angle = Mathf.Atan2(targetLookAtPos.y, targetLookAtPos.x) * Mathf.Rad2Deg;
+            angle -= 90;
+            transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
+
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision) {
+        
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision) {
+        if (collision.CompareTag("PatrolPoint")) {
+            StartCoroutine(ChangePatrolPoint());
+        }
+    }
+
+    IEnumerator ChangePatrolPoint() {
+        float OriginalMovementSpeed = MovementSpeed;
+        MovementSpeed = 0;
+        yield return new WaitForSeconds(Random.value * 3);
+
+        PatrolPointIndex++;
+        if (PatrolPointIndex >= PatrolPoints.Count) PatrolPointIndex = 0;
+        PatrolTarget = PatrolPoints[PatrolPointIndex];
+
+        MovementSpeed = OriginalMovementSpeed;
+
+        Patrolling = false;
+        yield return new WaitForFixedUpdate();
+        Patrolling = true;
     }
 
     void HandlePosessed() {
@@ -63,6 +122,7 @@ public class PosessableController : MonoBehaviour
         SliderCanvas.enabled = true;
         PosessableCollider.enabled = false;
         PosessableAnimator.speed = 1.5f;
+        Patrolling = false;
 
         PosessionTimeoutCoroutine = StartCoroutine(PosessionTimeout());
     }
@@ -92,5 +152,6 @@ public class PosessableController : MonoBehaviour
         CanBePosessed = true;
         PosessionCooldownStartTime = 0;
         SliderCanvas.enabled = false;
+        Patrolling = true;
     }
 }

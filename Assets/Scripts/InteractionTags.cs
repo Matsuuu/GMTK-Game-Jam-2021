@@ -9,5 +9,7 @@ public enum InteractionTag {
     KEYCARD_RED,
     GUNS,
     DECONTAMINATION,
-    SCIENTIST
+    SCIENTIST,
+    CHEW,
+    RAT_HOLES
 }
