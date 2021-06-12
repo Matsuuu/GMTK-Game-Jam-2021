@@ -14,6 +14,7 @@ public class PosessionController : MonoBehaviour
     public bool CanCancelPosession = false;
     public BoxCollider2D PlayerCollider;
 
+    private ParticleSystem Particles;
     private InteractionController PlayerInteractionController;
     private float OriginalPlayerMovespeed;
     private Vector2 OriginalBoxColliderSize;
@@ -24,6 +25,7 @@ public class PosessionController : MonoBehaviour
         PlayerControllerScript = GetComponent<PlayerController>();
         PlayerCollider = GetComponent<BoxCollider2D>();
         PlayerInteractionController = GetComponent<InteractionController>();
+        Particles = GetComponentInChildren<ParticleSystem>();
 
         OriginalPlayerMovespeed = PlayerControllerScript.Speed;
         OriginalBoxColliderOffset = PlayerCollider.offset;
@@ -64,13 +66,15 @@ public class PosessionController : MonoBehaviour
         CopyPosessionStats();
         PlayerInteractionController.UpdateInteractionTags(PosessionTarget.InteractionTags);
 
+        Particles.Stop();
         IsPosessing = true;
         CanCancelPosession = true;
         PlayerControllerScript.CanMove = true;
     }
 
     private void CopyPosessionStats() {
-        Vector2 scaleModifier = new Vector2(PosessionTarget.transform.localScale.x , PosessionTarget.transform.localScale.y);
+
+        Vector2 scaleModifier = new Vector2(2, 2);
         BoxCollider2D boxCollider2D = PosessionTarget.GetComponent<BoxCollider2D>();
         PlayerControllerScript.Speed = PosessionTarget.MovementSpeed;
         PlayerCollider.offset = boxCollider2D.offset * scaleModifier;
@@ -93,6 +97,7 @@ public class PosessionController : MonoBehaviour
     public void EndPosession() {
         IsPosessing = false;
         PosessionTarget = null;
+        Particles.Play();
         ReturnOriginalStats();
         PlayerInteractionController.ClearInteractionTags();
     }
