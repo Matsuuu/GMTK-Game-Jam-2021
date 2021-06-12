@@ -21,8 +21,7 @@ public class PosessableController : MonoBehaviour
     private Canvas SliderCanvas;
     private PosessionController PlayerPosessionController;
     private BoxCollider2D PosessableCollider;
-
-    
+    private Animator PosessableAnimator;
 
 
     // Start is called before the first frame update
@@ -31,7 +30,7 @@ public class PosessableController : MonoBehaviour
         SliderElement = GetComponentInChildren<Slider>();
         SliderCanvas = GetComponentInChildren<Canvas>();
         PosessableCollider = GetComponent<BoxCollider2D>();
-
+        PosessableAnimator = GetComponent<Animator>();
 
         SliderElement.maxValue = PosessionTimeInSeconds;
         SliderCanvas.enabled = false;
@@ -64,6 +63,7 @@ public class PosessableController : MonoBehaviour
         PosessionStartTime = Time.time;
         SliderCanvas.enabled = true;
         PosessableCollider.enabled = false;
+        PosessableAnimator.speed = 1.5f;
 
         PosessionTimeoutCoroutine = StartCoroutine(PosessionTimeout());
     }
@@ -79,6 +79,7 @@ public class PosessableController : MonoBehaviour
         PosessableCollider.enabled = true;
         IsPosessed = false;
         PosessionStartTime = 0;
+        PosessableAnimator.speed = 1;
         PlayerPosessionController.EndPosession();
 
         StartCoroutine(PosessionCooldown());
