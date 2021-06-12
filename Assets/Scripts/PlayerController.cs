@@ -6,6 +6,7 @@ public class PlayerController : MonoBehaviour
 {
     public float Speed;
     public float Acceleration;
+    public Vector2 Velocity;
 
     // Start is called before the first frame update
     void Start()
