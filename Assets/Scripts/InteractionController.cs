@@ -21,6 +21,14 @@ public class InteractionController : MonoBehaviour
     {
         FindInteractable();
         ManageIndicator();
+
+        ManageInteraction();
+    }
+
+    private void ManageInteraction() {
+        if (Input.GetButtonDown("Interact") && CanInteract && InteractionTarget) {
+            InteractionTarget.DoInteraction();
+        }
     }
 
     private void ManageIndicator() {

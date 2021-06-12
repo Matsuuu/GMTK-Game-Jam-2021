@@ -42,17 +42,35 @@ public class PosessionController : MonoBehaviour
     }
 
     private void HandlePosess() {
-        if (Input.GetButtonDown("Posess") && PosessableTarget && PosessableTarget.CanBePosessed && PlayerControllerScript.CanMove) {
-            PosessionTarget = PosessableTarget;
-            PosessableTarget.Posess();
-            PlayerControllerScript.CanMove = false;
-            StartCoroutine(HandlePosessionStart());
+        if (Input.GetButtonDown("Posess") && !IsPosessing && PosessableTarget && PosessableTarget.CanBePosessed && PlayerControllerScript.CanMove) {
+            DoPosess();
+            return;
         }
 
         // TODO: Checkaa että onko toinen targetti tähtäimessä
-        if (IsPosessing && PosessionTarget && Input.GetButtonDown("Posess") && CanCancelPosession) {
+
+        if (IsPosessing && PosessableTarget && Input.GetButtonDown("Posess")) {
+            StartCoroutine(DoSwap());
+            return;
+        }
+
+        if (IsPosessing && Input.GetButtonDown("Posess") && CanCancelPosession) {
+            Debug.Log("Bar");
             PosessionTarget.EndPosess();
         }
+    }
+
+    IEnumerator DoSwap() {
+        PosessionTarget.EndPosess();
+        yield return new WaitForSeconds(0.2f);
+        DoPosess();
+    }
+
+    private void DoPosess() {
+        PosessionTarget = PosessableTarget;
+        PosessableTarget.Posess();
+        PlayerControllerScript.CanMove = false;
+        StartCoroutine(HandlePosessionStart());
     }
 
     private IEnumerator HandlePosessionStart() {
@@ -118,7 +136,7 @@ public class PosessionController : MonoBehaviour
     }
 
     private void ManageIndicator() {
-        PosessionIndicator.SetActive(PosessableTarget != null && PosessableTarget.CanBePosessed && PosessionTarget == null);
+        PosessionIndicator.SetActive(PosessableTarget != null && PosessableTarget.CanBePosessed);
         if (!PosessableTarget) return;
 
         PosessionIndicator.transform.position = PosessableTarget.transform.position;

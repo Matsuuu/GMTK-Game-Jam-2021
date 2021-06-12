@@ -30,7 +30,6 @@ public class PosessableController : MonoBehaviour
 
     // Start is called before the first frame update
     void Start() {
-        CanBePosessed = true;
         SliderElement = GetComponentInChildren<Slider>();
         SliderCanvas = GetComponentInChildren<Canvas>();
         PosessableCollider = GetComponent<BoxCollider2D>();
@@ -50,9 +49,9 @@ public class PosessableController : MonoBehaviour
     }
 
     void HandlePatrol() {
-        if (Patrolling && PatrolPoints.Count <= 0) return;
+        if (Patrolling || PatrolPoints.Count <= 0) return;
 
-        StartCoroutine(DoPatrol());    
+        StartCoroutine(DoPatrol());
     }
 
     private IEnumerator DoPatrol() {
