@@ -11,12 +11,12 @@ public class PosessableController : MonoBehaviour
     public int PosessionTimeInSeconds = 10;
     public int PosessionCooldownInSeconds = 20;
     public float MovementSpeed = 2;
+    public List<InteractionTag> InteractionTags;
 
     private float PosessionStartTime;
     private float PosessionCooldownStartTime;
 
     private Coroutine PosessionTimeoutCoroutine;
-
     private Slider SliderElement;
     private Canvas SliderCanvas;
     private PosessionController PlayerPosessionController;

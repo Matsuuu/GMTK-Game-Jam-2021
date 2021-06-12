@@ -126,7 +126,7 @@ public class PosessionController : MonoBehaviour
     private void OnTriggerExit2D(Collider2D collision) {
         PosessableController posessableController = collision.GetComponent<PosessableController>();
         if (posessableController) {
-            if (PosessableTarget & posessableController == PosessableTarget) {
+            if (posessableController == PosessableTarget) {
                 PosessableTarget = null;
             }
             TargetsInRadius.Remove(posessableController);
