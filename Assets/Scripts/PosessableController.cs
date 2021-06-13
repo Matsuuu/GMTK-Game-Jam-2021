@@ -42,7 +42,9 @@ public class PosessableController : MonoBehaviour
         SliderCanvas.enabled = false;
         PlayerPosessionController = GameObject.FindGameObjectWithTag("Player").GetComponent<PosessionController>();
 
+    }
 
+    private void Awake() {
         if (PatrolPoints.Count > 0) {
             Patrolling = true;
             StartCoroutine(DoPatrol());
@@ -126,6 +128,7 @@ public class PosessableController : MonoBehaviour
         PosessableAnimator.speed = 1.5f;
         Patrolling = false;
         MovementSpeed = OriginalMovementSpeed;
+        PosessableAnimator.SetTrigger("Posess");
 
         PosessionTimeoutCoroutine = StartCoroutine(PosessionTimeout());
     }

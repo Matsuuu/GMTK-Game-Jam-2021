@@ -5,6 +5,7 @@ using UnityEngine;
 public class HazmatController : MonoBehaviour
 {
     public PosessableController PosessableScript;
+    public Animator HazmatAnimator;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,6 +20,6 @@ public class HazmatController : MonoBehaviour
     public void OnInteract() {
         PosessableScript.CanBePosessed = true;
         gameObject.SetActive(false);
-        // TODO: Some animation
+        HazmatAnimator.SetTrigger("Action");
     }
 }
