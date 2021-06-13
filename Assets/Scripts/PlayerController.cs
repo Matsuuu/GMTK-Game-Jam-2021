@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour
     public bool IsMoving = false;
     public GameObject DeathCanvas;
     public Text DeathCanvasReasonText;
+    public GameObject WinCanvas;
     private Animator PlayerAnimator;
 
     public AudioSource PlayerAudio;
@@ -111,5 +112,10 @@ public class PlayerController : MonoBehaviour
         DeathCanvasReasonText.text = deathReason;
         yield return new WaitForSeconds(3);
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    public void WinStage() {
+        CanMove = false;
+        WinCanvas.SetActive(true);
     }
 }
