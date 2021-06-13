@@ -24,11 +24,18 @@ public class PlayerController : MonoBehaviour
 
     private void Update() {
         HandleRestart();
+        HandleBackToMenu();
     }
 
     private void HandleRestart() {
         if (Input.GetButtonDown("Restart")) {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
+    }
+
+    private void HandleBackToMenu() {
+        if (Input.GetButtonDown("Escape")) {
+            SceneManager.LoadScene("MenuScene");
         }
     }
 
@@ -54,5 +61,16 @@ public class PlayerController : MonoBehaviour
         float angle = Mathf.Atan2(mousePos.y, mousePos.x) * Mathf.Rad2Deg;
         angle -= 90;
         transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
+    }
+
+    public void KillPlayer(string deathReason) {
+        CanMove = false;
+        StartCoroutine(DoDeath());
+    }
+
+    private IEnumerator DoDeath() {
+        //TODO: Death animation
+        yield return new WaitForSeconds(3);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }

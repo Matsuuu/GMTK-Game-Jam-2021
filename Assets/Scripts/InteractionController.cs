@@ -57,6 +57,10 @@ public class InteractionController : MonoBehaviour
         InteractionTarget = null;
     }
 
+    public bool HasTag(InteractionTag tag) {
+        return InteractionTags.Contains(tag);
+    }
+
     private bool RaycastHitViableTarget(RaycastHit2D hit, InteractableController interactionTarget) {
         return hit
             && CanInteract
