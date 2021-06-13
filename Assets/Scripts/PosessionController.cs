@@ -76,7 +76,6 @@ public class PosessionController : MonoBehaviour
         PosessableTarget.Posess();
         PlayerControllerScript.CanMove = false;
 
-        Debug.Log("aaa");
         PlayerAudio.clip = PosessionAudio;
         PlayerAudio.Play();
         
