@@ -14,8 +14,11 @@ public class PosessionController : MonoBehaviour
     public bool CanCancelPosession = false;
     public BoxCollider2D PlayerCollider;
 
+    public AudioClip PosessionAudio;
+
     private ParticleSystem Particles;
     private InteractionController PlayerInteractionController;
+    private AudioSource PlayerAudio;
     private float OriginalPlayerMovespeed;
     private Vector2 OriginalBoxColliderSize;
     private Vector2 OriginalBoxColliderOffset;
@@ -26,6 +29,7 @@ public class PosessionController : MonoBehaviour
         PlayerCollider = GetComponent<BoxCollider2D>();
         PlayerInteractionController = GetComponent<InteractionController>();
         Particles = GetComponentInChildren<ParticleSystem>();
+        PlayerAudio = GetComponent<AudioSource>();
 
         OriginalPlayerMovespeed = PlayerControllerScript.Speed;
         OriginalBoxColliderOffset = PlayerCollider.offset;
@@ -72,6 +76,10 @@ public class PosessionController : MonoBehaviour
         PosessionTarget = PosessableTarget;
         PosessableTarget.Posess();
         PlayerControllerScript.CanMove = false;
+
+        PlayerAudio.clip = PosessionAudio;
+        PlayerAudio.Play();
+        
         StartCoroutine(HandlePosessionStart());
     }
 

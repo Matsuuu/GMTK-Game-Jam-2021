@@ -69,7 +69,7 @@ public class PlayerController : MonoBehaviour
     }
 
     public void KillPlayer(string deathReason) {
-        CanMove = false;
+        CanMove = false;    
         StartCoroutine(DoDeath(deathReason));
     }
 
