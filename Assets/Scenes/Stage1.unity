@@ -5735,120 +5735,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4611484858406027150, guid: 22b10905d07660242aaa0c649ffa7800, type: 3}
   m_PrefabInstance: {fileID: 287655833}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &288881301
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 288881302}
-  - component: {fileID: 288881304}
-  - component: {fileID: 288881303}
-  - component: {fileID: 288881305}
-  - component: {fileID: 288881306}
-  m_Layer: 0
-  m_Name: InteractionField
-  m_TagString: Interactable
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &288881302
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 288881301}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1896885147}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &288881303
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 288881301}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 57eb3a285f102e440ab7553eb4a5e35c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  PosessableScript: {fileID: 1896885145}
-  HazmatAnimator: {fileID: 1501138131}
---- !u!114 &288881304
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 288881301}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3dbe0b016a672a0469285cb19363dbbf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  CanBeInteractedWith: 1
-  InteractionTag: 4
-  OnInteraction:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 288881303}
-        m_TargetAssemblyTypeName: HazmatController, Assembly-CSharp
-        m_MethodName: OnInteract
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
---- !u!58 &288881305
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 288881301}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.41
---- !u!50 &288881306
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 288881301}
-  m_BodyType: 1
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
 --- !u!1001 &308093252
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6151,21 +6037,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 288881303, guid: 0cc312fe7559aee43bd7a2888d1d55b6, type: 3}
+      propertyPath: GunCock
+      value: 
+      objectReference: {fileID: 8300000, guid: 333eea8379cc86a4094f890355ec5c72, type: 3}
+    - target: {fileID: 288881303, guid: 0cc312fe7559aee43bd7a2888d1d55b6, type: 3}
+      propertyPath: GunManSayBad
+      value: 
+      objectReference: {fileID: 8300000, guid: 51edd11d4318071428a030d8dbe104fc, type: 3}
+    - target: {fileID: 288881307, guid: 0cc312fe7559aee43bd7a2888d1d55b6, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 536273699271843064, guid: 0cc312fe7559aee43bd7a2888d1d55b6, type: 3}
       propertyPath: m_RootOrder
       value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 536273699271843064, guid: 0cc312fe7559aee43bd7a2888d1d55b6, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 536273699271843064, guid: 0cc312fe7559aee43bd7a2888d1d55b6, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 536273699271843064, guid: 0cc312fe7559aee43bd7a2888d1d55b6, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 536273699271843064, guid: 0cc312fe7559aee43bd7a2888d1d55b6, type: 3}
       propertyPath: m_LocalPosition.x
@@ -6210,22 +6096,6 @@ PrefabInstance:
     - target: {fileID: 536273699271843066, guid: 0cc312fe7559aee43bd7a2888d1d55b6, type: 3}
       propertyPath: m_Name
       value: HazmatScientist Variant
-      objectReference: {fileID: 0}
-    - target: {fileID: 536273699271843070, guid: 0cc312fe7559aee43bd7a2888d1d55b6, type: 3}
-      propertyPath: PosessionTimeInSeconds
-      value: 25
-      objectReference: {fileID: 0}
-    - target: {fileID: 536273699271843070, guid: 0cc312fe7559aee43bd7a2888d1d55b6, type: 3}
-      propertyPath: InteractionTags.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 536273699271843070, guid: 0cc312fe7559aee43bd7a2888d1d55b6, type: 3}
-      propertyPath: InteractionTags.Array.data[0]
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 536273699271843070, guid: 0cc312fe7559aee43bd7a2888d1d55b6, type: 3}
-      propertyPath: InteractionTags.Array.data[1]
-      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 536273700200030986, guid: 0cc312fe7559aee43bd7a2888d1d55b6, type: 3}
       propertyPath: m_AnchorMax.x
@@ -12981,11 +12851,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2026403460726263241, guid: 6875a24959917f24294a8ea7ed962c1d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3.88
+      value: 4.2
       objectReference: {fileID: 0}
     - target: {fileID: 2026403460726263241, guid: 6875a24959917f24294a8ea7ed962c1d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 9.91
+      value: 9.94
       objectReference: {fileID: 0}
     - target: {fileID: 2026403460726263241, guid: 6875a24959917f24294a8ea7ed962c1d, type: 3}
       propertyPath: m_LocalPosition.z
@@ -13839,11 +13709,6 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 1821967031636363489, guid: e4a59850dd919b244bfc82c2c9fcd116, type: 3}
   m_PrefabInstance: {fileID: 1498090235}
-  m_PrefabAsset: {fileID: 0}
---- !u!95 &1501138131 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 8437441904045835162, guid: 0cc312fe7559aee43bd7a2888d1d55b6, type: 3}
-  m_PrefabInstance: {fileID: 345223423}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1501753491
 GameObject:
@@ -15340,22 +15205,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &1896885145 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 536273699271843070, guid: 0cc312fe7559aee43bd7a2888d1d55b6, type: 3}
-  m_PrefabInstance: {fileID: 345223423}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f0fbd9e6601c11049857d3f0157663d2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!4 &1896885147 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 536273699271843064, guid: 0cc312fe7559aee43bd7a2888d1d55b6, type: 3}
-  m_PrefabInstance: {fileID: 345223423}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1913425568
 GameObject:
   m_ObjectHideFlags: 0
