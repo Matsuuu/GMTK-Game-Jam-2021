@@ -23,7 +23,6 @@ public class MenuCameraController : MonoBehaviour
     {
         Vector2 newPos = Vector2.MoveTowards(transform.position, CurrentTarget.position, Time.deltaTime * 1.25f);
         transform.position = new Vector3(newPos.x, newPos.y, ZAxis);
-        Debug.Log(transform.position.y);
         if (transform.position.y == PreviousY) {
             PreviousY = -9999;
             CurrentTarget = CurrentTarget == EndingPoint ? StartingPoint : EndingPoint;
