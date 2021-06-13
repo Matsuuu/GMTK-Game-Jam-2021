@@ -6203,18 +6203,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 288881303, guid: 0cc312fe7559aee43bd7a2888d1d55b6, type: 3}
-      propertyPath: GunCock
-      value: 
-      objectReference: {fileID: 8300000, guid: 333eea8379cc86a4094f890355ec5c72, type: 3}
-    - target: {fileID: 288881303, guid: 0cc312fe7559aee43bd7a2888d1d55b6, type: 3}
-      propertyPath: GunManSayBad
-      value: 
-      objectReference: {fileID: 8300000, guid: 51edd11d4318071428a030d8dbe104fc, type: 3}
-    - target: {fileID: 288881307, guid: 0cc312fe7559aee43bd7a2888d1d55b6, type: 3}
-      propertyPath: m_PlayOnAwake
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 536273699271843064, guid: 0cc312fe7559aee43bd7a2888d1d55b6, type: 3}
       propertyPath: m_RootOrder
       value: 5
@@ -6262,14 +6250,6 @@ PrefabInstance:
     - target: {fileID: 536273699271843066, guid: 0cc312fe7559aee43bd7a2888d1d55b6, type: 3}
       propertyPath: m_Name
       value: HazmatScientist Variant
-      objectReference: {fileID: 0}
-    - target: {fileID: 536273699271843070, guid: 0cc312fe7559aee43bd7a2888d1d55b6, type: 3}
-      propertyPath: Patrolling
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 536273699271843070, guid: 0cc312fe7559aee43bd7a2888d1d55b6, type: 3}
-      propertyPath: HidePlayerSprite
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 536273700200030986, guid: 0cc312fe7559aee43bd7a2888d1d55b6, type: 3}
       propertyPath: m_AnchorMax.x
@@ -13086,18 +13066,6 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2026403460726263241, guid: 6875a24959917f24294a8ea7ed962c1d, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 2026403460726263241, guid: 6875a24959917f24294a8ea7ed962c1d, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 2026403460726263241, guid: 6875a24959917f24294a8ea7ed962c1d, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 2026403460726263241, guid: 6875a24959917f24294a8ea7ed962c1d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 4.2
       objectReference: {fileID: 0}
@@ -13140,18 +13108,6 @@ PrefabInstance:
     - target: {fileID: 2026403460726263243, guid: 6875a24959917f24294a8ea7ed962c1d, type: 3}
       propertyPath: m_Name
       value: Gunboi Variant
-      objectReference: {fileID: 0}
-    - target: {fileID: 2026403460726263247, guid: 6875a24959917f24294a8ea7ed962c1d, type: 3}
-      propertyPath: Patrolling
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2026403460726263247, guid: 6875a24959917f24294a8ea7ed962c1d, type: 3}
-      propertyPath: CanBePosessed
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2026403460726263247, guid: 6875a24959917f24294a8ea7ed962c1d, type: 3}
-      propertyPath: PatrolPoints.Array.size
-      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2026403460726263247, guid: 6875a24959917f24294a8ea7ed962c1d, type: 3}
       propertyPath: PatrolPoints.Array.data[0]

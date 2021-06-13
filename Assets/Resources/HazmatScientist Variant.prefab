@@ -79,8 +79,8 @@ MonoBehaviour:
   PosessableScript: {fileID: 536273699271843070}
   HazmatAnimator: {fileID: 8437441904045835162}
   HazmatAudio: {fileID: 0}
-  GunCock: {fileID: 0}
-  GunManSayBad: {fileID: 0}
+  GunCock: {fileID: 8300000, guid: 333eea8379cc86a4094f890355ec5c72, type: 3}
+  GunManSayBad: {fileID: 8300000, guid: 51edd11d4318071428a030d8dbe104fc, type: 3}
 --- !u!58 &288881305
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -129,7 +129,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -228,6 +228,14 @@ PrefabInstance:
     - target: {fileID: 8243534155983199934, guid: c88879f56cd1b334e981f28c8dadac8d, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8243534157449830730, guid: c88879f56cd1b334e981f28c8dadac8d, type: 3}
+      propertyPath: Patrolling
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8243534157449830730, guid: c88879f56cd1b334e981f28c8dadac8d, type: 3}
+      propertyPath: HidePlayerSprite
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8243534157449830730, guid: c88879f56cd1b334e981f28c8dadac8d, type: 3}
       propertyPath: PosessionTimeInSeconds

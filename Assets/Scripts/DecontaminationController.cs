@@ -28,7 +28,9 @@ public class DecontaminationController : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision) {
         if (collision.CompareTag("Player") && collision.GetType() == typeof(BoxCollider2D)) {
-            StopCoroutine(KillingTimer);
+            if (KillingTimer != null) {
+                StopCoroutine(KillingTimer);
+            }
             KillingTimer = null;
         }
     }

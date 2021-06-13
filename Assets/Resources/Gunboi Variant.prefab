@@ -12,8 +12,20 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 9100000, guid: 93b76cc2ccef02a46b33ae496a911aaf, type: 2}
     - target: {fileID: 6914042457258213235, guid: 63434530b27dc924e81432483a0e137e, type: 3}
+      propertyPath: Patrolling
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6914042457258213235, guid: 63434530b27dc924e81432483a0e137e, type: 3}
+      propertyPath: CanBePosessed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6914042457258213235, guid: 63434530b27dc924e81432483a0e137e, type: 3}
       propertyPath: PosessionTimeInSeconds
       value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 6914042457258213235, guid: 63434530b27dc924e81432483a0e137e, type: 3}
+      propertyPath: PatrolPoints.Array.size
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6914042457258213235, guid: 63434530b27dc924e81432483a0e137e, type: 3}
       propertyPath: InteractionTags.Array.data[0]
@@ -32,12 +44,24 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6914042457258213237, guid: 63434530b27dc924e81432483a0e137e, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6914042457258213237, guid: 63434530b27dc924e81432483a0e137e, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6914042457258213237, guid: 63434530b27dc924e81432483a0e137e, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6914042457258213237, guid: 63434530b27dc924e81432483a0e137e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.06
+      value: 4.2
       objectReference: {fileID: 0}
     - target: {fileID: 6914042457258213237, guid: 63434530b27dc924e81432483a0e137e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.5
+      value: 9.94
       objectReference: {fileID: 0}
     - target: {fileID: 6914042457258213237, guid: 63434530b27dc924e81432483a0e137e, type: 3}
       propertyPath: m_LocalPosition.z
@@ -45,19 +69,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6914042457258213237, guid: 63434530b27dc924e81432483a0e137e, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.99998415
+      value: 0.71812165
       objectReference: {fileID: 0}
     - target: {fileID: 6914042457258213237, guid: 63434530b27dc924e81432483a0e137e, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 6914042457258213237, guid: 63434530b27dc924e81432483a0e137e, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 6914042457258213237, guid: 63434530b27dc924e81432483a0e137e, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.005637424
+      value: -0.69591767
       objectReference: {fileID: 0}
     - target: {fileID: 6914042457258213237, guid: 63434530b27dc924e81432483a0e137e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -69,7 +93,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6914042457258213237, guid: 63434530b27dc924e81432483a0e137e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: -0.646
+      value: -88.201
       objectReference: {fileID: 0}
     - target: {fileID: 6914042457258213238, guid: 63434530b27dc924e81432483a0e137e, type: 3}
       propertyPath: m_Sprite
@@ -77,7 +101,7 @@ PrefabInstance:
       objectReference: {fileID: 8278891065929229066, guid: c513790bf247d584098d8827f4bdd118, type: 3}
     - target: {fileID: 6914042457258213239, guid: 63434530b27dc924e81432483a0e137e, type: 3}
       propertyPath: m_Name
-      value: Gunboi
+      value: Gunboi Variant
       objectReference: {fileID: 0}
     - target: {fileID: 6914042458207486087, guid: 63434530b27dc924e81432483a0e137e, type: 3}
       propertyPath: m_AnchorMax.x

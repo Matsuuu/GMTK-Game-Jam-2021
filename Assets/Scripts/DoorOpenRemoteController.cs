@@ -4,13 +4,15 @@ using UnityEngine;
 
 public class DoorOpenRemoteController : MonoBehaviour
 {
-    public DoorController TargetDoor;
+    public List<DoorController> TargetDoors;
     public bool IsUsed;
 
     public void OnInteract() {
         if (!IsUsed) {
             IsUsed = true;
-            TargetDoor.OpenDoor();
+            foreach (DoorController TargetDoor in TargetDoors) {
+                TargetDoor.OpenDoor();
+            }
         }
     }
 }
