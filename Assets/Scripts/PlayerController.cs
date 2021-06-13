@@ -28,7 +28,6 @@ public class PlayerController : MonoBehaviour
 
     private void HandleRestart() {
         if (Input.GetButtonDown("Restart")) {
-            Debug.Log("aa");
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
     }
