@@ -1747,7 +1747,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -11294,11 +11294,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1018883045352091226, guid: ab1dd688d44364a42af3f0b6dcbf96fd, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 12.349598
+      value: 12.4
       objectReference: {fileID: 0}
     - target: {fileID: 1018883045352091226, guid: ab1dd688d44364a42af3f0b6dcbf96fd, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 9.70425
+      value: 8.82
       objectReference: {fileID: 0}
     - target: {fileID: 1018883045352091226, guid: ab1dd688d44364a42af3f0b6dcbf96fd, type: 3}
       propertyPath: m_LocalPosition.z
@@ -11335,6 +11335,10 @@ PrefabInstance:
     - target: {fileID: 1018883045352091228, guid: ab1dd688d44364a42af3f0b6dcbf96fd, type: 3}
       propertyPath: CanBePosessed
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1018883045352091228, guid: ab1dd688d44364a42af3f0b6dcbf96fd, type: 3}
+      propertyPath: PosessionTimeInSeconds
+      value: 15
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ab1dd688d44364a42af3f0b6dcbf96fd, type: 3}

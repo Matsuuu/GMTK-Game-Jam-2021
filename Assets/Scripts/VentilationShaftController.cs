@@ -30,13 +30,20 @@ public class VentilationShaftController : MonoBehaviour
 
     private IEnumerator DoTransition() {
         AnimatorController.SetTrigger("Open");
+        SpriteRenderer PlayerSprite = PlayerObject.GetComponent<SpriteRenderer>();
+        SpriteRenderer PosessionTargetSprite = PlayerObject.PosessionTarget.GetComponent<SpriteRenderer>();
+        PlayerController PlayerController = PlayerObject.GetComponent<PlayerController>();
+
         VentAudio.Play();
-        PlayerObject.gameObject.SetActive(false);
-        PlayerObject.PosessionTarget.gameObject.SetActive(false);
+        PlayerSprite.enabled = false;
+        PosessionTargetSprite.enabled = false;
+        PlayerController.CanMove = false;
         yield return new WaitForSeconds(0.4f);
         PlayerObject.transform.position = TargetVent.transform.position;
         yield return new WaitForSeconds(0.3f);
-        PlayerObject.gameObject.SetActive(true);
-        PlayerObject.PosessionTarget.gameObject.SetActive(true);
+
+        PlayerSprite.enabled = true;
+        PosessionTargetSprite.enabled = true;
+        PlayerController.CanMove = true;
     }
 }
