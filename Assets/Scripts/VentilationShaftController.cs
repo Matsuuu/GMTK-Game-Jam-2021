@@ -9,11 +9,13 @@ public class VentilationShaftController : MonoBehaviour
 
     public VentilationShaftController TargetVent;
     private Animator AnimatorController;
+    private AudioSource VentAudio;
     // Start is called before the first frame update
     void Start()
     {
         AnimatorController = GetComponent<Animator>();
         PlayerObject = GameObject.FindGameObjectWithTag("Player").GetComponent<PosessionController>();
+        VentAudio = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -28,6 +30,7 @@ public class VentilationShaftController : MonoBehaviour
 
     private IEnumerator DoTransition() {
         AnimatorController.SetTrigger("Open");
+        VentAudio.Play();
         PlayerObject.gameObject.SetActive(false);
         PlayerObject.PosessionTarget.gameObject.SetActive(false);
         yield return new WaitForSeconds(0.4f);
