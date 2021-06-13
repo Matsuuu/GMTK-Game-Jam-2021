@@ -14,6 +14,7 @@ public class PosessableController : MonoBehaviour
     public List<InteractionTag> InteractionTags;
     public List<Transform> PatrolPoints;
     public bool Patrolling = true;
+    public bool HidePlayerSprite;
 
     public int PatrolPointIndex = 0;
     public Transform PatrolTarget;
@@ -21,6 +22,7 @@ public class PosessableController : MonoBehaviour
     private float PosessionStartTime;
     private float PosessionCooldownStartTime;
 
+    private SpriteRenderer PlayerSprite;
     private Coroutine PosessionTimeoutCoroutine;
     private Slider SliderElement;
     private Canvas SliderCanvas;
@@ -37,6 +39,7 @@ public class PosessableController : MonoBehaviour
         SliderCanvas = GetComponentInChildren<Canvas>();
         PosessableCollider = GetComponent<BoxCollider2D>();
         PosessableAnimator = GetComponent<Animator>();
+        PlayerSprite = GameObject.FindGameObjectWithTag("Player").GetComponent<SpriteRenderer>();
 
         SliderElement.maxValue = PosessionTimeInSeconds;
         SliderCanvas.enabled = false;
@@ -129,6 +132,9 @@ public class PosessableController : MonoBehaviour
         Patrolling = false;
         MovementSpeed = OriginalMovementSpeed;
         PosessableAnimator.SetTrigger("Posess");
+        if (HidePlayerSprite) {
+            PlayerSprite.enabled = false;
+        }
 
         PosessionTimeoutCoroutine = StartCoroutine(PosessionTimeout());
     }
@@ -145,6 +151,10 @@ public class PosessableController : MonoBehaviour
         IsPosessed = false;
         PosessionStartTime = 0;
         PosessableAnimator.speed = 1;
+
+        if (HidePlayerSprite) {
+            PlayerSprite.enabled = true;
+        }
         PlayerPosessionController.EndPosession();
 
         StartCoroutine(PosessionCooldown());
