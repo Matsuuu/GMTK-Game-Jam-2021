@@ -13,11 +13,16 @@ public class PlayerController : MonoBehaviour
     public Text DeathCanvasReasonText;
     private Animator PlayerAnimator;
 
+    private AudioSource PlayerAudio;
+    public AudioClip DeathAudio;
+    public AudioClip WalkAudio;
+
     // Start is called before the first frame update
     void Start()
     {
         PlayerAnimator = GetComponent<Animator>();
         DeathCanvas.SetActive(false);
+        PlayerAudio = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -75,6 +80,8 @@ public class PlayerController : MonoBehaviour
 
     private IEnumerator DoDeath(string deathReason) {
         PlayerAnimator.SetTrigger("Death");
+        PlayerAudio.clip = DeathAudio;
+        PlayerAudio.Play();
         yield return new WaitForSeconds(2);
         DeathCanvas.SetActive(true);
         DeathCanvasReasonText.text = deathReason;
