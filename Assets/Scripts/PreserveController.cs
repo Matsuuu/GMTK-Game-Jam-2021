@@ -7,7 +7,12 @@ public class PreserveController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        DontDestroyOnLoad(this);
+        GameObject preservedInstance = GameObject.Find(gameObject.name);
+        if (!preservedInstance || preservedInstance == gameObject) {
+            DontDestroyOnLoad(this);
+        } else {
+            Destroy(gameObject);
+        }
     }
 
     // Update is called once per frame
