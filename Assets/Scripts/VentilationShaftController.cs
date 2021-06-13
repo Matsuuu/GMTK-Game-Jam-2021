@@ -27,6 +27,7 @@ public class VentilationShaftController : MonoBehaviour
     }
 
     private IEnumerator DoTransition() {
+        AnimatorController.SetTrigger("Open");
         PlayerObject.gameObject.SetActive(false);
         PlayerObject.PosessionTarget.gameObject.SetActive(false);
         yield return new WaitForSeconds(0.4f);

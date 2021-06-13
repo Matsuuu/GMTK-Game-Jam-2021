@@ -2,17 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
     public float Speed;
     public float Acceleration;
     public bool CanMove = true;
+    public GameObject DeathCanvas;
+    public Text DeathCanvasReasonText;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        DeathCanvas.SetActive(false);
     }
 
     // Update is called once per frame
@@ -65,11 +68,13 @@ public class PlayerController : MonoBehaviour
 
     public void KillPlayer(string deathReason) {
         CanMove = false;
-        StartCoroutine(DoDeath());
+        StartCoroutine(DoDeath(deathReason));
     }
 
-    private IEnumerator DoDeath() {
+    private IEnumerator DoDeath(string deathReason) {
         //TODO: Death animation
+        DeathCanvas.SetActive(true);
+        DeathCanvasReasonText.text = deathReason;
         yield return new WaitForSeconds(3);
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
