@@ -29,7 +29,7 @@ public class MenuScript : MonoBehaviour
 
     public void GoToGameScene()
     {
-        ChangeScene("GameScene");
+        ChangeScene("Stage1");
     }
 
     public void GoToMenuScene()

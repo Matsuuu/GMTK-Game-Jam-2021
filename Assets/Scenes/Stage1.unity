@@ -11263,6 +11263,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Rat Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 1402137187766529681, guid: cd2c9ee0b3102af4982e17f3c30a3874, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1402137187766529683, guid: cd2c9ee0b3102af4982e17f3c30a3874, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -11505,11 +11509,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6914042457258213237, guid: 63434530b27dc924e81432483a0e137e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 5.7
+      value: -11.28
       objectReference: {fileID: 0}
     - target: {fileID: 6914042457258213237, guid: 63434530b27dc924e81432483a0e137e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.55
+      value: 11.93
       objectReference: {fileID: 0}
     - target: {fileID: 6914042457258213237, guid: 63434530b27dc924e81432483a0e137e, type: 3}
       propertyPath: m_LocalPosition.z
