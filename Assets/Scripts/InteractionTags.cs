@@ -11,5 +11,6 @@ public enum InteractionTag {
     DECONTAMINATION,
     SCIENTIST,
     CHEW,
-    RAT_HOLES
+    RAT_HOLES,
+    REMOTE_DOOR
 }

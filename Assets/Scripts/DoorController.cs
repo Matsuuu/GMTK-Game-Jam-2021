@@ -17,7 +17,16 @@ public class DoorController : MonoBehaviour
         DoorAudio = GetComponent<AudioSource>();
     }
     public void OnInteract() {
-        GetComponent<InteractableController>().CanBeInteractedWith = false;
+        OpenDoor();
+    }
+
+    public void OpenDoor() {
+
+        InteractableController interactableController = GetComponent<InteractableController>();
+        if (interactableController) {
+            interactableController.CanBeInteractedWith = false;
+        }
+
         StartCoroutine(OpenDoors());
     }
 
