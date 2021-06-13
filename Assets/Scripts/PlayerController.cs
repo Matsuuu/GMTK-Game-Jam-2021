@@ -11,10 +11,12 @@ public class PlayerController : MonoBehaviour
     public bool CanMove = true;
     public GameObject DeathCanvas;
     public Text DeathCanvasReasonText;
+    private Animator PlayerAnimator;
 
     // Start is called before the first frame update
     void Start()
     {
+        PlayerAnimator = GetComponent<Animator>();
         DeathCanvas.SetActive(false);
     }
 
@@ -72,7 +74,8 @@ public class PlayerController : MonoBehaviour
     }
 
     private IEnumerator DoDeath(string deathReason) {
-        //TODO: Death animation
+        PlayerAnimator.SetTrigger("Death");
+        yield return new WaitForSeconds(2);
         DeathCanvas.SetActive(true);
         DeathCanvasReasonText.text = deathReason;
         yield return new WaitForSeconds(3);
