@@ -59,7 +59,7 @@ public class PlayerController : MonoBehaviour
     }
 
     private void HandleStageWon() {
-        if (Input.GetButtonDown("Interact")) {
+        if (Input.GetButtonDown("Interact") && StageWon) {
             SceneManager.LoadScene("MenuScene");
         }
     }
@@ -125,6 +125,7 @@ public class PlayerController : MonoBehaviour
 
     public void WinStage() {
         CanMove = false;
+        StageWon = true;
         WinCanvas.SetActive(true);
     }
 }
