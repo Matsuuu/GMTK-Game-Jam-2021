@@ -7,11 +7,14 @@ public class DoorController : MonoBehaviour
     public Transform DoorOne;
     public Transform DoorTwo;
 
+    private AudioSource DoorAudio;
+
     public int PixelMovementCount;
 
 
 
     private void Start() {
+        DoorAudio = GetComponent<AudioSource>();
     }
     public void OnInteract() {
         GetComponent<InteractableController>().CanBeInteractedWith = false;
@@ -19,6 +22,7 @@ public class DoorController : MonoBehaviour
     }
 
     private IEnumerator OpenDoors() {
+        DoorAudio.Play();
         Vector3 DoorOnePosition = DoorOne.transform.localPosition;
         Vector3 DoorTwoPosition = DoorTwo.transform.localPosition;
         for (int i = 0; i < PixelMovementCount; i++) {

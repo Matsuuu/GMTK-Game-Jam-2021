@@ -14,7 +14,7 @@ public class PlayerController : MonoBehaviour
     public Text DeathCanvasReasonText;
     private Animator PlayerAnimator;
 
-    private AudioSource PlayerAudio;
+    public AudioSource PlayerAudio;
     public AudioClip DeathAudio;
     public AudioClip WalkAudio;
 
@@ -23,7 +23,6 @@ public class PlayerController : MonoBehaviour
     {
         PlayerAnimator = GetComponent<Animator>();
         DeathCanvas.SetActive(false);
-        PlayerAudio = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
