@@ -23,6 +23,9 @@ public class HazmatController : MonoBehaviour
     }
 
     public void OnInteract() {
+        PosessionController posessionController = GameObject.FindGameObjectWithTag("Player").GetComponent<PosessionController>();
+        Animator gunManAnimator = posessionController.PosessionTarget.GetComponent<Animator>();
+        gunManAnimator.SetTrigger("Action");
         StartCoroutine(DoUndress());
     }
 
