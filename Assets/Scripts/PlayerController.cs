@@ -19,6 +19,8 @@ public class PlayerController : MonoBehaviour
     public AudioClip DeathAudio;
     public AudioClip WalkAudio;
 
+    public bool StageWon = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -37,6 +39,7 @@ public class PlayerController : MonoBehaviour
         HandleRestart();
         HandleBackToMenu();
         HandleMovementSounds();
+        HandleStageWon();
     }
 
     private void HandleMovementSounds() {
@@ -52,6 +55,12 @@ public class PlayerController : MonoBehaviour
             if (PlayerAudio.clip == WalkAudio) {
                 PlayerAudio.Stop();
             }
+        }
+    }
+
+    private void HandleStageWon() {
+        if (Input.GetButtonDown("Interact")) {
+            SceneManager.LoadScene("MenuScene");
         }
     }
 
