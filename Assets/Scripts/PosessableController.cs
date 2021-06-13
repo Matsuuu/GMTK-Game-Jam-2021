@@ -41,6 +41,12 @@ public class PosessableController : MonoBehaviour
         SliderElement.maxValue = PosessionTimeInSeconds;
         SliderCanvas.enabled = false;
         PlayerPosessionController = GameObject.FindGameObjectWithTag("Player").GetComponent<PosessionController>();
+
+
+        if (PatrolPoints.Count > 0) {
+            Patrolling = true;
+            StartCoroutine(DoPatrol());
+        }
     }
 
     // Update is called once per frame
@@ -52,15 +58,12 @@ public class PosessableController : MonoBehaviour
     }
 
     void HandlePatrol() {
-        if (Patrolling || PatrolPoints.Count <= 0) return;
 
-        Patrolling = true;
-        StartCoroutine(DoPatrol());
     }
 
     private IEnumerator DoPatrol() {
         PatrolTarget = PatrolPoints[PatrolPointIndex];
-        float step = 2 * Time.deltaTime;
+        float step = 2 * Time.deltaTime * MovementSpeed;
         while (Patrolling) {
             yield return new WaitForFixedUpdate();
             transform.position = Vector2.MoveTowards(transform.position, PatrolTarget.position, step);
@@ -78,12 +81,8 @@ public class PosessableController : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D collision) {
-        
-    }
-
     private void OnTriggerEnter2D(Collider2D collision) {
-        if (collision.CompareTag("PatrolPoint")) {
+        if (collision.CompareTag("PatrolPoint") && PatrolTarget && collision.transform == PatrolTarget.transform) {
             StartCoroutine(ChangePatrolPoint());
         }
     }
@@ -99,8 +98,9 @@ public class PosessableController : MonoBehaviour
         MovementSpeed = OriginalMovementSpeed;
 
         Patrolling = false;
-        yield return new WaitForFixedUpdate();
+        yield return new WaitForSeconds(1);
         Patrolling = true;
+        StartCoroutine(DoPatrol());
     }
 
     void HandlePosessed() {
