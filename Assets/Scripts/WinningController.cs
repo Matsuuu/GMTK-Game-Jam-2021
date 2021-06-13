@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class WinningController : MonoBehaviour
 {
+    public bool WinGame;
+    public bool WinStage;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,7 +20,12 @@ public class WinningController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision) {
         if (collision.CompareTag("Player")) {
-            collision.GetComponent<PlayerController>().WinStage();
+            if (WinStage) {
+                collision.GetComponent<PlayerController>().WinStage();
+            }
+            if (WinGame) {
+                collision.GetComponent<PlayerController>().WinGame();
+            }
         }
     }
 }

@@ -20,6 +20,7 @@ public class PlayerController : MonoBehaviour
     public AudioClip WalkAudio;
 
     public bool StageWon = false;
+    public bool GameWon = false;
 
     // Start is called before the first frame update
     void Start()
@@ -59,8 +60,13 @@ public class PlayerController : MonoBehaviour
     }
 
     private void HandleStageWon() {
-        if (Input.GetButtonDown("Interact") && StageWon) {
-            SceneManager.LoadScene("MenuScene");
+        if (Input.GetButtonDown("Interact")) {
+            if (StageWon) {
+                SceneManager.LoadScene("Stage2");
+            }
+            if (GameWon) {
+                SceneManager.LoadScene("MenuScene");
+            }
         }
     }
 
@@ -126,6 +132,12 @@ public class PlayerController : MonoBehaviour
     public void WinStage() {
         CanMove = false;
         StageWon = true;
+        WinCanvas.SetActive(true);
+    }
+
+    public void WinGame() {
+        CanMove = false;
+        GameWon = true;
         WinCanvas.SetActive(true);
     }
 }
