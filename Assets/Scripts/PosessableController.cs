@@ -65,9 +65,9 @@ public class PosessableController : MonoBehaviour
 
     private IEnumerator DoPatrol() {
         PatrolTarget = PatrolPoints[PatrolPointIndex];
-        float step = 5 * Time.deltaTime * MovementSpeed;
         while (Patrolling) {
             yield return new WaitForFixedUpdate();
+            float step = 2 * Time.deltaTime * MovementSpeed;
             transform.position = Vector2.MoveTowards(transform.position, PatrolTarget.position, step);
 
             Vector3 targetLookAtPos = new Vector3(PatrolTarget.position.x, PatrolTarget.position.y, 0);

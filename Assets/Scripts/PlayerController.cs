@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
     public float Speed;
     public float Acceleration;
     public bool CanMove = true;
+    public bool IsMoving = false;
     public GameObject DeathCanvas;
     public Text DeathCanvasReasonText;
     private Animator PlayerAnimator;
@@ -35,6 +36,23 @@ public class PlayerController : MonoBehaviour
     private void Update() {
         HandleRestart();
         HandleBackToMenu();
+        HandleMovementSounds();
+    }
+
+    private void HandleMovementSounds() {
+        if (IsMoving) {
+            if (PlayerAudio.clip != WalkAudio) {
+                PlayerAudio.clip = WalkAudio;
+            }
+            if (!PlayerAudio.isPlaying) {
+                PlayerAudio.Play();
+                PlayerAudio.loop = true;
+            }
+        } else {
+            if (PlayerAudio.clip == WalkAudio) {
+                PlayerAudio.Stop();
+            }
+        }
     }
 
     private void HandleRestart() {
@@ -51,10 +69,15 @@ public class PlayerController : MonoBehaviour
 
     void HandleMovement()
     {
-        if (!CanMove) return;
+        if (!CanMove) {
+            IsMoving = false;
+            return;
+        }
             
         float xAxis = Input.GetAxis("Horizontal") * Speed;
         float yAxis = Input.GetAxis("Vertical") * Speed;
+
+        IsMoving = xAxis != 0 || yAxis != 0;
 
         Vector3 oldPos = transform.position;
         transform.position = new Vector3(oldPos.x + xAxis * Time.deltaTime, oldPos.y + yAxis * Time.deltaTime, 0);
@@ -80,7 +103,9 @@ public class PlayerController : MonoBehaviour
 
     private IEnumerator DoDeath(string deathReason) {
         PlayerAnimator.SetTrigger("Death");
+        PlayerAudio.loop = false;
         PlayerAudio.clip = DeathAudio;
+        PlayerAudio.volume = 0.6f;
         PlayerAudio.Play();
         yield return new WaitForSeconds(2);
         DeathCanvas.SetActive(true);

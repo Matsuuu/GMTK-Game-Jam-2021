@@ -12467,6 +12467,14 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4370012246878481518, guid: f9da9f2e1c4d3aa46814e078f1c2f741, type: 3}
+      propertyPath: WalkAudio
+      value: 
+      objectReference: {fileID: 8300000, guid: cf3138a1e11a82443bfe1c2e2eaec2b4, type: 3}
+    - target: {fileID: 4370012246878481518, guid: f9da9f2e1c4d3aa46814e078f1c2f741, type: 3}
+      propertyPath: DeathAudio
+      value: 
+      objectReference: {fileID: 8300000, guid: a497907ee8265c742aaf5d88d5291347, type: 3}
+    - target: {fileID: 4370012246878481518, guid: f9da9f2e1c4d3aa46814e078f1c2f741, type: 3}
       propertyPath: DeathCanvas
       value: 
       objectReference: {fileID: 33898086}
